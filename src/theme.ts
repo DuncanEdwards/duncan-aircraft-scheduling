@@ -1,8 +1,25 @@
-import { Theme } from "theme-ui";
+/** @jsxImportSource theme-ui */
+
+import { Theme } from 'theme-ui';
 
 export const theme: Theme = {
-  fonts: {
-    body: "system-ui, sans-serif",
-    heading: '"Avenir Next", sans-serif',
-  },
+    colors: {
+        text: '#000',
+        background: '#fff',
+        primary: '#ecf4be',
+        secondary: '#90d2c3',
+    },
+    fontSizes: [12, 14, 16, 20],
+    fontWeights: {
+        heading: 600,
+    },
+    space: [0, 4, 8, 16, 24, 32, 64, 128],
+    styles: {
+        root: {
+            '*': {
+                fontFamily: '"Raleway", sans-serif',
+                fontWeight: 400,
+            },
+        },
+    },
 };
