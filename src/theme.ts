@@ -8,6 +8,8 @@ export const theme: Theme = {
         background: '#fff',
         primary: '#ecf4be',
         secondary: '#90d2c3',
+
+        planeNoBooking: '#d8d8d8',
     },
     fontSizes: [12, 14, 16, 20],
     fontWeights: {
