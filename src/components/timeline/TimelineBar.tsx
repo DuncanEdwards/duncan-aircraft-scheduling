@@ -5,7 +5,6 @@ import { RootState } from '../../reducers/rootReducer';
 import { RotationState } from '../../reducers/rotationReducer';
 import { TimelineBarSegment } from './TimelineBarSegment';
 import config from '../../config.json';
-import { minutesInDay } from './Timeline';
 import { useSelector } from 'react-redux';
 
 export enum TimelineSegmentType {
@@ -19,6 +18,7 @@ export type TimelineSegment = {
     type: TimelineSegmentType;
 };
 
+export const minutesInDay: number = 24 * 60;
 const secondsInDay: number = minutesInDay * 60;
 
 const secondsAsDayFraction = (seconds: number): number => seconds / secondsInDay;
@@ -50,7 +50,7 @@ const getTimelineSegments = (assignedFlights: IFlightDetails[]): TimelineSegment
     }
 
     const finalFlightFinishedTime =
-        assignedFlights.length == 0
+        assignedFlights.length === 0
             ? 0
             : assignedFlights[assignedFlights.length - 1].arrivalTime + turnaroundTimeInSeconds;
     if (finalFlightFinishedTime < secondsInDay) {
