@@ -1,12 +1,11 @@
 /** @jsxImportSource theme-ui */
 
 import { Box, Flex } from '@theme-ui/components';
-import { ThemeUIStyleObject } from '@theme-ui/css';
+
 import { FunctionComponent } from 'react';
+import { ThemeUIStyleObject } from '@theme-ui/css';
 
-export const TimelineChunk: FunctionComponent<{ minutes: number; isLast: boolean }> = ({ minutes, isLast }) => {
-    console.log(minutes);
-
+export const TimelineAxisChunk: FunctionComponent<{ minutes: number; isLast: boolean }> = ({ minutes, isLast }) => {
     const getHour = (minutes: number): string => (minutes / 60).toFixed(0).padStart(2, '0');
     const getMinutes = (minutes: number): string => (parseInt(minutes.toString()) % 60).toString().padStart(2, '0');
 

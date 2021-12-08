@@ -9,7 +9,9 @@ export const theme: Theme = {
         primary: '#ecf4be',
         secondary: '#90d2c3',
 
-        planeNoBooking: '#d8d8d8',
+        planeIdle: '#d8d8d8',
+        planeService: '#70acb4',
+        planeTurnaround: '#7573b6',
     },
     fontSizes: [12, 14, 16, 20],
     fontWeights: {
