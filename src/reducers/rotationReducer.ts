@@ -10,6 +10,7 @@ export interface RotationState {
 const initialState: RotationState = {
     assignedFlights: [
         { id: 'AS1234', departureTime: 27000, arrivalTime: 33300, origin: 'LHBP', destination: 'LFSB' },
+        { id: 'AS1126', departureTime: 35100, arrivalTime: 41700, origin: 'LIRN', destination: 'LFSB' },
         { id: 'AS1179', departureTime: 56100, arrivalTime: 84000, origin: 'LFSB', destination: 'LEST' },
     ],
 };
