@@ -5,13 +5,16 @@ import { Theme } from 'theme-ui';
 export const theme: Theme = {
     colors: {
         text: '#000',
-        background: '#fff',
+        secondaryText: '#6F6F6F',
+        background: '#eee',
         primary: '#ecf4be',
-        secondary: '#90d2c3',
+        secondary: '#F5F5F5',
 
-        planeIdle: '#d8d8d8',
+        planeIdle: '#b8b8b8',
         planeService: '#70acb4',
         planeTurnaround: '#7573b6',
+
+        sectionBackground: 'white',
     },
     fontSizes: [12, 14, 16, 20],
     fontWeights: {
@@ -21,7 +24,7 @@ export const theme: Theme = {
     styles: {
         root: {
             '*': {
-                fontFamily: '"Raleway", sans-serif',
+                fontFamily: '"Rubik", sans-serif',
                 fontWeight: 400,
             },
         },
