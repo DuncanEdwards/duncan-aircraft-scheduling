@@ -16,7 +16,7 @@ export const theme: Theme = {
 
         sectionBackground: 'white',
     },
-    fontSizes: [12, 14, 16, 20],
+    fontSizes: [12, 14, 16, 20, 24],
     fontWeights: {
         heading: 600,
     },
