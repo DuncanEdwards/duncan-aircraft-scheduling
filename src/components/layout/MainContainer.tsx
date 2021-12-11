@@ -3,12 +3,8 @@
 import { Box, Flex } from '@theme-ui/components';
 
 import { FunctionComponent } from 'react';
-import { getHighestUtilizationRotation } from '../../services/getHighestUtilizationRotation';
 import { FlightAssignments } from '../assignments/FlightAssignments';
 import { Timeline } from '../timeline';
-
-import data from '../../services/allFlights.json';
-import { IFlightDetails } from '../../reducers/flightDetails';
 
 export const MainContainer: FunctionComponent = () => {
     return (

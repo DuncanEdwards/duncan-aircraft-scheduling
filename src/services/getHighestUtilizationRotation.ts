@@ -51,8 +51,9 @@ const recursiveFlightNodeCalculator = (flightDetails: IFlightDetails[], nodeDeta
         nodeDetails.bestFlightList = [...nodeDetails.currentFlightList];
     }
 
+    //Unravel list and reduce utilized seconds as we descend back down tree levels
     const poppedItem = nodeDetails.currentFlightList.pop();
-    if (poppedItem != undefined) {
+    if (poppedItem !== undefined) {
         nodeDetails.currentUtilizedSeconds -= poppedItem!.arrivalTime - poppedItem!.departureTime;
     }
 };

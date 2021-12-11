@@ -15,6 +15,7 @@ export const theme: Theme = {
         planeTurnaround: '#7573b6',
 
         sectionBackground: 'white',
+        optionSelectedColor: '#5fb15f',
     },
     fontSizes: [12, 14, 16, 20, 24],
     fontWeights: {
