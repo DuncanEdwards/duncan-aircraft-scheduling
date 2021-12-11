@@ -44,7 +44,9 @@ const getTimelineSegments = (assignedFlights: IFlightDetails[]): TimelineSegment
             type: TimelineSegmentType.Service,
         });
         timelineSegments.push({
-            fractionOfDay: secondsAsDayFraction(turnaroundTimeInSeconds),
+            fractionOfDay: secondsAsDayFraction(
+                Math.min(secondsInDay - currentAssignedFlight.arrivalTime, turnaroundTimeInSeconds)
+            ),
             type: TimelineSegmentType.Turnaround,
         });
     }
@@ -59,6 +61,8 @@ const getTimelineSegments = (assignedFlights: IFlightDetails[]): TimelineSegment
             type: TimelineSegmentType.Idle,
         });
     }
+
+    console.log('timelineSegments', timelineSegments);
 
     return timelineSegments;
 };
