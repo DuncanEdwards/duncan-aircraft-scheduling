@@ -3,6 +3,16 @@
 import { Theme } from 'theme-ui';
 
 export const theme: Theme = {
+    buttons: {
+        primary: {
+            color: 'text',
+            bg: 'lightblue',
+            cursor: 'pointer',
+            ':hover': {
+                bg: '#5fb15f',
+            },
+        },
+    },
     colors: {
         text: '#000',
         secondaryText: '#6F6F6F',
@@ -16,6 +26,7 @@ export const theme: Theme = {
 
         sectionBackground: 'white',
         optionSelectedColor: '#5fb15f',
+        sideItemsBackground: '#ddd',
     },
     fontSizes: [12, 14, 16, 20, 24],
     fontWeights: {

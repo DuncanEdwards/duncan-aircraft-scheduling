@@ -1,9 +1,9 @@
 import { TimelineSegment, TimelineSegmentType } from './TimelineBar';
 
 import { Box } from 'theme-ui';
-import { FunctionComponent } from 'react';
+import { FC } from 'react';
 
-export const TimelineBarSegment: FunctionComponent<{ segment: TimelineSegment }> = ({ segment }) => (
+export const TimelineBarSegment: FC<{ segment: TimelineSegment }> = ({ segment }) => (
     <Box
         sx={{
             backgroundColor: `plane${TimelineSegmentType[segment.type]}`,

@@ -2,11 +2,12 @@
 
 import { Box, Flex } from '@theme-ui/components';
 
-import { FunctionComponent } from 'react';
+import { FC } from 'react';
+import { AircraftList } from '../aircrafts/AircraftList';
 import { FlightAssignments } from '../assignments/FlightAssignments';
 import { Timeline } from '../timeline';
 
-export const MainContainer: FunctionComponent = () => {
+export const MainContainer: FC = () => {
     return (
         <Flex
             sx={{
@@ -17,14 +18,16 @@ export const MainContainer: FunctionComponent = () => {
                 alignItems: 'top',
             }}
         >
-            <Box sx={{ width: '250px', backgroundColor: 'lightBlue' }}>Aircraft</Box>
+            <Box sx={{ width: '250px', backgroundColor: 'sideItemsBackground', borderRadius: 4 }}>
+                <AircraftList />
+            </Box>
             <Flex sx={{ flexDirection: 'column', flex: 1 }}>
                 <Box sx={{ flex: 1, px: 3 }}>
                     <FlightAssignments />
                 </Box>
                 <Timeline />
             </Flex>
-            <Box sx={{ width: '250px', backgroundColor: 'lightYellow' }}>Aircraft</Box>
+            <Box sx={{ width: '250px', backgroundColor: 'sideItemsBackground', borderRadius: 4 }}>Aircraft</Box>
         </Flex>
     );
 };

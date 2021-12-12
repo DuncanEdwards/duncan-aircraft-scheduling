@@ -11,9 +11,12 @@ interface INodeDetails {
     currentUtilizedSeconds: number;
 }
 
-export const getHighestUtilizationRotation = (flightDetails: IFlightDetails[]): IFlightDetails[] => {
+export const getHighestUtilizationRotation = (
+    currentOrigin: string,
+    flightDetails: IFlightDetails[]
+): IFlightDetails[] => {
     let nodeDetails: INodeDetails = {
-        currentOrigin: 'EGKK',
+        currentOrigin: currentOrigin,
         currentStartTime: 0,
         bestFlightList: [],
         bestUtilizedSeconds: 0,

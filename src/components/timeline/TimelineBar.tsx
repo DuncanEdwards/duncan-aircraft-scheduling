@@ -1,5 +1,5 @@
 import { Flex } from 'theme-ui';
-import { FunctionComponent } from 'react';
+import { FC } from 'react';
 import { IFlightDetails } from '../../reducers/flightDetails';
 import { RootState } from '../../reducers/rootReducer';
 import { RotationState } from '../../reducers/rotationReducer';
@@ -60,12 +60,10 @@ const getTimelineSegments = (assignedFlights: IFlightDetails[]): TimelineSegment
         });
     }
 
-    console.log('timelineSegments', timelineSegments);
-
     return timelineSegments;
 };
 
-export const TimelineBar: FunctionComponent = () => {
+export const TimelineBar: FC = () => {
     const assignedFlights = useSelector<RootState, RotationState>((state) => state.ROTATION_STORE).assignedFlights;
 
     return (

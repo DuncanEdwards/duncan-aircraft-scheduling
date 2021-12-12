@@ -3,11 +3,11 @@
 import { Box, Flex } from '@theme-ui/components';
 import { TimelineBar } from './TimelineBar';
 
-import { FunctionComponent } from 'react';
+import { FC } from 'react';
 import { TimelineAxisChunk } from './TimelineAxisChunk';
 import { minutesInDay } from '../../shared/constants';
 
-export const Timeline: FunctionComponent = () => {
+export const Timeline: FC = () => {
     const segmentCount: number = 8;
     return (
         <Box sx={{ paddingX: 5 }}>

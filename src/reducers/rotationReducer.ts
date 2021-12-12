@@ -1,9 +1,10 @@
 import { createAction, createReducer } from '@reduxjs/toolkit';
+import { IAircraft } from './aircraft';
 
 import { IFlightDetails } from './flightDetails';
 
 export interface RotationState {
-    currentPlane?: string;
+    currentAircraft?: IAircraft;
     assignedFlights: IFlightDetails[];
 }
 
@@ -13,6 +14,9 @@ const initialState: RotationState = {
 
 const rotationStore = 'ROTATION_STORE';
 
+const setCurrentAircraft = 'SET_CURRENT_AIRCRAFT';
+const setCurrentAircraftAction = createAction<IAircraft>(`${rotationStore}/${setCurrentAircraft}`);
+
 const assignFlight = 'ASSIGN_FLIGHT';
 const assignFlightAction = createAction(`${rotationStore}/${assignFlight}`);
 
@@ -20,6 +24,11 @@ const setAllFlights = 'SET_ALL_FLIGHTS';
 const setAllFlightsAction = createAction<IFlightDetails[]>(`${rotationStore}/${setAllFlights}`);
 
 const rotationReducer = createReducer<RotationState>(initialState, (builder) => {
+    builder.addCase(setCurrentAircraftAction, (state, action) => {
+        if (action.payload) {
+            state.currentAircraft = action.payload;
+        }
+    });
     builder.addCase(assignFlightAction, (state, action) => {
         if (action.payload) {
             state.assignedFlights = [...state.assignedFlights, action.payload];
@@ -32,4 +41,4 @@ const rotationReducer = createReducer<RotationState>(initialState, (builder) => 
     });
 });
 
-export { rotationStore, rotationReducer, assignFlightAction, setAllFlightsAction };
+export { rotationStore, rotationReducer, setCurrentAircraftAction, assignFlightAction, setAllFlightsAction };
