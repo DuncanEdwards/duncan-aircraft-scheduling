@@ -6,6 +6,7 @@ import { RotationState } from '../../reducers/rotationReducer';
 import { TimelineBarSegment } from './TimelineBarSegment';
 import config from '../../config.json';
 import { useSelector } from 'react-redux';
+import { secondsInDay } from '../../shared/constants';
 
 export enum TimelineSegmentType {
     Idle,
@@ -17,9 +18,6 @@ export type TimelineSegment = {
     fractionOfDay: number;
     type: TimelineSegmentType;
 };
-
-export const minutesInDay: number = 24 * 60;
-const secondsInDay: number = minutesInDay * 60;
 
 const secondsAsDayFraction = (seconds: number): number => seconds / secondsInDay;
 

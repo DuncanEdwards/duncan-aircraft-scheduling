@@ -8,15 +8,7 @@ export interface RotationState {
 }
 
 const initialState: RotationState = {
-    assignedFlights: [
-        /*{ id: 'AS1234', departureTime: 27000, arrivalTime: 33300, origin: 'LHBP', destination: 'LFSB' },
-        { id: 'AS1126', departureTime: 35100, arrivalTime: 41700, origin: 'LIRN', destination: 'LFSB' },
-        { id: 'AS1179', departureTime: 56100, arrivalTime: 84000, origin: 'LFSB', destination: 'LEST' },*/
-        { id: 'AS8973', arrivalTime: 31500, departureTime: 20400, destination: 'LBSF', origin: 'EGKK' },
-        { id: 'AS8974', arrivalTime: 47400, departureTime: 34800, destination: 'EGKK', origin: 'LBSF' },
-        { id: 'AS8705', arrivalTime: 66000, departureTime: 49800, destination: 'GCTS', origin: 'EGKK' },
-        { id: 'AS1902', arrivalTime: 86100, departureTime: 69300, destination: 'EGCC', origin: 'GCTS' },
-    ],
+    assignedFlights: [],
 };
 
 const rotationStore = 'ROTATION_STORE';
@@ -24,12 +16,20 @@ const rotationStore = 'ROTATION_STORE';
 const assignFlight = 'ASSIGN_FLIGHT';
 const assignFlightAction = createAction(`${rotationStore}/${assignFlight}`);
 
+const setAllFlights = 'SET_ALL_FLIGHTS';
+const setAllFlightsAction = createAction<IFlightDetails[]>(`${rotationStore}/${setAllFlights}`);
+
 const rotationReducer = createReducer<RotationState>(initialState, (builder) => {
     builder.addCase(assignFlightAction, (state, action) => {
         if (action.payload) {
             state.assignedFlights = [...state.assignedFlights, action.payload];
         }
     });
+    builder.addCase(setAllFlightsAction, (state, action) => {
+        if (action.payload) {
+            state.assignedFlights = action.payload;
+        }
+    });
 });
 
-export { rotationStore, rotationReducer, assignFlightAction };
+export { rotationStore, rotationReducer, assignFlightAction, setAllFlightsAction };

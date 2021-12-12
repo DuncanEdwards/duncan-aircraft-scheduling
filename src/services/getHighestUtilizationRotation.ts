@@ -1,5 +1,6 @@
 import { IFlightDetails } from '../reducers/flightDetails';
 import config from '../config.json';
+import { secondsInDay } from '../shared/constants';
 
 interface INodeDetails {
     currentOrigin: string;
@@ -21,10 +22,7 @@ export const getHighestUtilizationRotation = (flightDetails: IFlightDetails[]): 
     };
 
     recursiveFlightNodeCalculator(flightDetails, nodeDetails);
-
-    console.log('results', nodeDetails.bestUtilizedSeconds, nodeDetails.bestFlightList);
-
-    return [];
+    return nodeDetails.bestFlightList;
 };
 
 const recursiveFlightNodeCalculator = (flightDetails: IFlightDetails[], nodeDetails: INodeDetails) => {
@@ -32,7 +30,7 @@ const recursiveFlightNodeCalculator = (flightDetails: IFlightDetails[], nodeDeta
         (flightDetails) =>
             flightDetails.origin === nodeDetails.currentOrigin &&
             flightDetails.departureTime >= nodeDetails.currentStartTime &&
-            flightDetails.arrivalTime <= 24 * 60 * 60 //TODO:Reuse
+            flightDetails.arrivalTime <= secondsInDay
     );
 
     if (validFlights.length > 0) {
