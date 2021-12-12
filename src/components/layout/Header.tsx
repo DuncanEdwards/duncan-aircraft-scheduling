@@ -7,6 +7,8 @@ import { IsAutoContext } from '../../context/IsAutoContext';
 export const Header: FunctionComponent = () => {
     const isAutoContext = useContext(IsAutoContext);
 
+    console.log('isAutoContext', isAutoContext);
+
     return (
         <Box sx={{ backgroundColor: 'primary', textAlign: 'center', fontWeight: 'heading', fontSize: 4, p: 3 }}>
             <Flex sx={{ maxWidth: '1280px', justifyContent: 'space-between', margin: 'auto' }}>
@@ -19,13 +21,20 @@ export const Header: FunctionComponent = () => {
                         width: '150px',
                     }}
                 >
-                    <Switch
-                        id="enable-auto-mode"
-                        sx={{ alignItems: 'center', 'input:checked ~ &': { backgroundColor: 'optionSelectedColor' } }}
-                        label={'Auto mode'}
-                        checked={isAutoContext}
-                        onChange={(value) => (isAutoContext = value)}
-                    />
+                    <IsAutoContext.Consumer>
+                        {({ isAuto, setIsAuto }) => (
+                            <Switch
+                                id="enable-auto-mode"
+                                sx={{
+                                    alignItems: 'center',
+                                    'input:checked ~ &': { backgroundColor: 'optionSelectedColor' },
+                                }}
+                                checked={isAutoContext.isAuto}
+                                label={'Auto mode'}
+                                onChange={() => toggleIsAuto()}
+                            />
+                        )}
+                    </IsAutoContext.Consumer>
                 </Flex>
             </Flex>
         </Box>
