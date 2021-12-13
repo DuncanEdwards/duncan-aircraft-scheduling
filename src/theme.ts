@@ -11,6 +11,9 @@ export const theme: Theme = {
             ':hover': {
                 bg: '#5fb15f',
             },
+            ':disabled': {
+                opacity: 0.5,
+            },
         },
     },
     colors: {

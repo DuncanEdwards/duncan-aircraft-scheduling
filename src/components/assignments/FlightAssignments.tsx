@@ -15,11 +15,16 @@ export const FlightAssignments: FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const dispatch = useDispatch();
 
-    const getBestFlightRotation = () => {
+    const isConfirm = (): boolean => {
         if (assignedFlights.length > 0) {
-            if (!window.confirm('This will remove existing flights. Are you sure?')) {
-                return;
-            }
+            return window.confirm('This will remove existing flights. Are you sure?');
+        }
+        return true;
+    };
+
+    const getBestFlightRotation = () => {
+        if (!isConfirm()) {
+            return;
         }
         setIsLoading(true);
         setTimeout(() => {
@@ -38,7 +43,14 @@ export const FlightAssignments: FC = () => {
                 variant="primary"
                 onClick={getBestFlightRotation}
             >
-                Autoselect optimal rotation
+                Autocreate best
+            </Button>
+            <Button
+                sx={{ ml: 2 }}
+                disabled={isLoading || currentAircraft === undefined || assignedFlights.length === 0}
+                onClick={() => isConfirm() && dispatch(setAllFlightsAction([]))}
+            >
+                Clear all flights
             </Button>
         </>
     );
