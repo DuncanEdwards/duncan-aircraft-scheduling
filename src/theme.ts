@@ -13,6 +13,7 @@ export const theme: Theme = {
             },
             ':disabled': {
                 opacity: 0.5,
+                bg: 'lightblue',
             },
         },
     },

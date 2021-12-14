@@ -9,7 +9,7 @@ const getDisplayTime = (secondsFromStartOfDay: number) => {
             .toString()
             .padStart(2, '0') +
         ':' +
-        ((secondsFromStartOfDay / 60) % 60).toString()
+        ((secondsFromStartOfDay / 60) % 60).toString().padStart(2, '0')
     );
 };
 

@@ -15,7 +15,7 @@ function App() {
     return (
         <Provider store={store}>
             <ThemeProvider theme={theme}>
-                <Flex sx={{ flexDirection: 'column', height: '100%', maxHeight: '850px' }}>
+                <Flex sx={{ flexDirection: 'column', height: '100%', maxHeight: '772px' }}>
                     <Header />
                     <MainContainer />
                 </Flex>

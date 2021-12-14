@@ -5,6 +5,7 @@ import { Box, Flex } from '@theme-ui/components';
 import { FC } from 'react';
 import { AircraftList } from '../aircrafts/AircraftList';
 import { FlightAssignments } from '../assignments/FlightAssignments';
+import { FlightsList } from '../flights/FlightsList';
 import { Timeline } from '../timeline';
 
 export const MainContainer: FC = () => {
@@ -27,7 +28,9 @@ export const MainContainer: FC = () => {
                 </Box>
                 <Timeline />
             </Flex>
-            <Box sx={{ width: '250px', backgroundColor: 'sideItemsBackground', borderRadius: 4 }}>Aircraft</Box>
+            <Box sx={{ width: '250px', backgroundColor: 'sideItemsBackground', borderRadius: 4 }}>
+                <FlightsList />
+            </Box>
         </Flex>
     );
 };

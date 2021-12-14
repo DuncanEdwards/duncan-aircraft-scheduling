@@ -3,7 +3,7 @@
 import { Box, Flex } from '@theme-ui/components';
 import { FC } from 'react';
 import { IFlightDetails } from '../../reducers/flightDetails';
-import { FlightOrDestinationSection } from './FlightOrDestinationSection';
+import { FlightOrDestinationSection } from '../common/FlightOrDestinationSection';
 
 const getDurationDisplayTime = (durationInSeconds: number) => {
     return (

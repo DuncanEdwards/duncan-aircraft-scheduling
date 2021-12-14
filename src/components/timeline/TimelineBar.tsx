@@ -42,17 +42,13 @@ const getTimelineSegments = (assignedFlights: IFlightDetails[]): TimelineSegment
             type: TimelineSegmentType.Service,
         });
         timelineSegments.push({
-            fractionOfDay: secondsAsDayFraction(
-                Math.min(secondsInDay - currentAssignedFlight.arrivalTime, turnaroundTimeInSeconds)
-            ),
+            fractionOfDay: secondsAsDayFraction(i === assignedFlights.length - 1 ? 0 : turnaroundTimeInSeconds),
             type: TimelineSegmentType.Turnaround,
         });
     }
 
     const finalFlightFinishedTime =
-        assignedFlights.length === 0
-            ? 0
-            : assignedFlights[assignedFlights.length - 1].arrivalTime + turnaroundTimeInSeconds;
+        assignedFlights.length === 0 ? 0 : assignedFlights[assignedFlights.length - 1].arrivalTime;
     if (finalFlightFinishedTime < secondsInDay) {
         timelineSegments.push({
             fractionOfDay: secondsAsDayFraction(secondsInDay - finalFlightFinishedTime),
