@@ -53,7 +53,6 @@ const rotationReducer = createReducer<RotationState>(initialState, (builder) => 
         }
     });
     builder.addCase(setCurrentPageOfFlightsAction, (state, action) => {
-        console.log('action.payload', action.payload);
         if (action.payload) {
             state.currentPageOfFlights = action.payload;
         }
