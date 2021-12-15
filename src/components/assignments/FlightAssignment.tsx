@@ -1,8 +1,10 @@
 /** @jsxImportSource theme-ui */
 
-import { Box, Flex } from '@theme-ui/components';
+import { Box, Button, Flex } from '@theme-ui/components';
 import { FC } from 'react';
+import { useDispatch } from 'react-redux';
 import { IFlightDetails } from '../../reducers/flightDetails';
+import { unassignFlightAction } from '../../reducers/rotationReducer';
 import { FlightOrDestinationSection } from '../common/FlightOrDestinationSection';
 
 const getDurationDisplayTime = (durationInSeconds: number) => {
@@ -13,7 +15,8 @@ const getDurationDisplayTime = (durationInSeconds: number) => {
     );
 };
 
-export const FlightAssignment: FC<{ flight: IFlightDetails }> = ({ flight }) => {
+export const FlightAssignment: FC<{ flight: IFlightDetails; isLast: boolean }> = ({ flight, isLast }) => {
+    const dispatch = useDispatch();
     return (
         <Box
             sx={{
@@ -45,6 +48,12 @@ export const FlightAssignment: FC<{ flight: IFlightDetails }> = ({ flight }) => 
                     </Flex>
                 </Flex>
                 <FlightOrDestinationSection time={flight.arrivalTime} airportCode={flight.destination} />
+            </Flex>
+            <Flex
+                sx={{ justifyContent: 'center', fontSize: 0, mt: 2 }}
+                onClick={() => dispatch(unassignFlightAction(flight))}
+            >
+                {isLast && <Button sx={{ p: 1 }}>Deselect</Button>}
             </Flex>
         </Box>
     );
