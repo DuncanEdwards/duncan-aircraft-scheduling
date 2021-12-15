@@ -27,6 +27,7 @@ export const FlightAssignments: FC = () => {
             return;
         }
         setIsLoading(true);
+        // If this were real this would be a call to an API
         setTimeout(() => {
             const results = getHighestUtilizationRotation(currentAircraft!.base, flightList as IFlightDetails[]);
             setIsLoading(false);

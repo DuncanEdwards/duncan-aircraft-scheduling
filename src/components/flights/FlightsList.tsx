@@ -27,8 +27,6 @@ const getCurrentOriginAirportAndEarliestTime = (
 };
 
 export const FlightsList: FC = () => {
-    const pageSize = 10;
-
     const [page, setPage] = useState<number>(1);
     //We only need the paging in the flight list, so we store locally and don't need to send to Redux
     const [totalCount, setTotalCount] = useState<number>(0);
@@ -42,10 +40,12 @@ export const FlightsList: FC = () => {
 
     useEffect(() => {
         const { origin, earliestTime } = getCurrentOriginAirportAndEarliestTime(assignedFlights, currentAircraft);
-        getFakeApiFlightsPage(pageSize, (page - 1) * pageSize, origin, earliestTime).then((results) => {
-            dispatch(setCurrentPageOfFlightsAction(results.flights));
-            setTotalCount(results.totalCount);
-        });
+        getFakeApiFlightsPage(config.flightsPageSize, (page - 1) * config.flightsPageSize, origin, earliestTime).then(
+            (results) => {
+                dispatch(setCurrentPageOfFlightsAction(results.flights));
+                setTotalCount(results.totalCount);
+            }
+        );
     }, [setTotalCount, page, dispatch, assignedFlights, currentAircraft]);
     return (
         <Flex sx={{ flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
@@ -56,7 +56,7 @@ export const FlightsList: FC = () => {
             </Box>
             <FlightPager
                 page={page}
-                pageSize={pageSize}
+                pageSize={config.flightsPageSize}
                 totalCount={totalCount}
                 setCurrentPage={(page) => setPage(page)}
             />

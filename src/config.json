@@ -1,5 +1,6 @@
 {
     "turnaroundTimeInSeconds": 1200,
+    "flightsPageSize": 10,
     "flightsApi": {
         "baseUrl": "https://infinite-dawn-93085.herokuapp.com/",
         "flightsSubdirectory": "flights",
